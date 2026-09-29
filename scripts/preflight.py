@@ -8,8 +8,8 @@ def main():
     parser = argparse.ArgumentParser(description="Preflight somente leitura do Lab 02")
     parser.add_argument("namespace")
     ns = parser.parse_args().namespace
-    if not re.fullmatch(r"lab-plantao-[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ns) or len(ns) > 63:
-        parser.error("informe um projeto lab-plantao-<identificador>")
+    if not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ns) or len(ns) > 63:
+        parser.error("informe um projeto <identificador>")
     try:
         oc("whoami")
         n = get("namespace", ns)
