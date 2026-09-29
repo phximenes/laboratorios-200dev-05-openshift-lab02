@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: orcamento-plantao
+spec:
+  hard:
+    requests.cpu: TODO_CPU_TOTAL
+    requests.memory: 1Gi
+    limits.cpu: '2'
+    limits.memory: 2Gi
+    pods: '10'
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: padroes-plantao
+spec:
+  limits:
+  - type: Container
+    defaultRequest:
+      cpu: 50m
+      memory: 64Mi
+    default:
+      cpu: 200m
+      memory: 128Mi

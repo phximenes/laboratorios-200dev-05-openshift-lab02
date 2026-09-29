@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chamado-service
+spec:
+  selector:
+    app: atendimento
+    release: azul
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
