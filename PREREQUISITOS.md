@@ -34,6 +34,15 @@ oc project "$LAB_NS"
 bash scripts/preflight.sh "$LAB_NS"
 ```
 
+Em PowerShell:
+```powershell
+$Env:LAB_NS = 'lab-plantao-aluno01'
+oc new-project "$Env:LAB_NS"
+oc label namespace "$Env:LAB_NS" training.200dev.com/lab=plantao02
+oc project "$Env:LAB_NS"
+bash scripts/preflight.sh "$Env:LAB_NS"
+```
+
 Se o instrutor já criou o projeto, apenas selecione-o. Ele deve aplicar a label em um namespace realmente reservado à aula. O avaliador exige o prefixo e a label para evitar confusão com outros projetos.
 
 ## Preparação do instrutor
