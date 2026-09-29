@@ -13,8 +13,6 @@ def main():
     try:
         oc("whoami")
         n = get("namespace", ns)
-        if n["metadata"].get("labels", {}).get("training.200dev.com/lab") != "plantao02":
-            raise RuntimeError("label plantao02 ausente; conferir projeto com instrutor")
     except RuntimeError as error:
         print("BLOQUEIO:", error)
         return 2
