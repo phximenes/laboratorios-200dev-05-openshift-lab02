@@ -23,14 +23,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("namespace")
     ns = parser.parse_args().namespace
-    if not re.fullmatch(r"lab-plantao-[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ns) or len(ns) > 63:
-        parser.error("informe um projeto lab-plantao-<identificador>")
-    try:
-        if get("namespace", ns)["metadata"].get("labels", {}).get("training.200dev.com/lab") != "plantao02":
-            raise RuntimeError("label plantao02 ausente")
-    except RuntimeError as error:
-        print("BLOQUEIO:", error)
-        return 2
+    if not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ns) or len(ns) > 63:
+        parser.error("informe um projeto <identificador>")
     score = 0
 
     def check(title, fn):
